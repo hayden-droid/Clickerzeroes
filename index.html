@@ -2,14 +2,75 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Clicker zeroes</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <div >
+    <img src="Chameleos(Scissors).png" onclick="attack()">
+    <p id="level"></p>
+    <p id="health"></p>
+    <p id="moord"></p>
+    <p id="moneh"></p>
+    <p id="damage">
+    <p id="hello"></p>
+
+  </div>
+  <button onclick="upgrade()"><p id="harder"></p></button>
+  <script>
+      var enemyhealth = 11;
+      var clickdamage = 1;
+      var comdamage = 50;
+      var kills = 0;
+      var cost = 5;
+      var money = 0;
+      var level = 1;
+
+
+      function attack() {
+          enemyhealth = enemyhealth - clickdamage;
+          if(enemyhealth <= 0){
+              kills++;
+
+              money = money + 2*level;
+              if (kills == 10*level){
+                  //enemyhealth = enemyhealth + level * 10;
+                  level++;
+              }
+              enemyhealth = enemyhealth + 10 * level;
+              document.getElementById("health").innerHTML = "HP: " + "0";
+          }else{
+              document.getElementById("health").innerHTML = "HP: " + enemyhealth;
+          }
+
+
+          document.getElementById("level").innerHTML = "Level: " + level;
+          document.getElementById("moord").innerHTML = "Kills: " + kills;
+          document.getElementById("moneh").innerHTML = "Money: " + money;
+          document.getElementById("damage").innerHTML = "Damage: " + clickdamage;
+          document.getElementById("harder").innerHTML = "To upgrade have atleast: " + cost;
+
+
+        /*if(enemyhealth <= 0){
+         kills++;
+         money = money + (kills/2);
+
+
+         }*/
+      }
+
+      function upgrade(){
+
+          if(cost <= money){
+              money = money - cost;
+              cost = Math.floor(cost * 2);
+
+              clickdamage = Math.floor(clickdamage + 1);
+          }
+      }
+      function autodamage() {
+
+      }
+  </script>
   </body>
 
   <script>
