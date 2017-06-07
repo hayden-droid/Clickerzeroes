@@ -1,1 +1,1 @@
-This is just a javascript project.
+This is just a javascript project for electron.
